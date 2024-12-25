@@ -19,7 +19,7 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
     console.log('Entró a generateAnswer', mensajeRol, tipo_pregunta, indice, pregunta);
 
     const llm = new ChatOpenAI({
-        model: "gpt-40-mini",
+        model: "gpt-4o-mini",
         temperature: temperatura,
         maxTokens: 500,
       });

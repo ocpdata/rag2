@@ -1,6 +1,6 @@
 import { Document } from "@langchain/core/documents";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { loadDocuments } from "./loadDocuments";
+//import { loadDocuments } from "./loadDocuments";
 
 export async function splitDocuments(rawDocuments: Document[]): Promise<Document[]> {
   console.log("Inicia la división de documentos en partes...");
@@ -16,16 +16,9 @@ export async function splitDocuments(rawDocuments: Document[]): Promise<Document
     `${rawDocuments.length} documentos divididos en ${documentChunks.length} partes.`
   );
 
-  /*console.log('\n Chunks: \n');
-  for (let cont = 0; cont <10; cont++){
-    console.log(documentChunks[cont]);
-    console.log('/n');
-  }*/
-  
-
   return documentChunks;
 }
 
- //const rawDocuments = await loadDocuments();
-
- //await splitDocuments(rawDocuments);
+//Para test
+//const rawDocuments = await loadDocuments();
+//await splitDocuments(rawDocuments);

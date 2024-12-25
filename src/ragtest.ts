@@ -5,18 +5,11 @@ import { createRetriever } from "./retrievertest";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { formatDocumentsAsString } from "langchain/util/document";
 import dotenv from "dotenv";
-import { syncBuiltinESMExports } from "module";
+//import { syncBuiltinESMExports } from "module";
 
 dotenv.config();
 
-//prompt
 let prompt;
-
-const llm = new ChatOpenAI({
-  model: "gpt-3.5-turbo",
-  temperature: 0.1,
-  maxTokens: 500,
-});
 
 const outputParser = new StringOutputParser();
 
@@ -26,7 +19,7 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
     console.log('Entró a generateAnswer', mensajeRol, tipo_pregunta, indice, pregunta);
 
     const llm = new ChatOpenAI({
-        model: "gpt-3.5-turbo",
+        model: "gpt-40-mini",
         temperature: temperatura,
         maxTokens: 500,
       });
@@ -82,5 +75,6 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
     return respuesta;
 }
 
+//Para test
 /*const response = await generateAnswer('consulta', 'pdf4', 'como es el proceso de venta?');
 console.log(response);*/

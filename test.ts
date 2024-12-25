@@ -8,7 +8,7 @@ import {router} from './routes/rutas.ts';
 //Define el uso de express paar las APIS
 const app = express();
 
-//Define el servidor https
+//Define el servidor https con las credenciales
 const httpsServer = https.createServer(credenciales, app);
 
 //Define el parseador para los urls ingresados

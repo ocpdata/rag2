@@ -31,12 +31,13 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
             mensaje = mensajeRol + `Pregunta: {question} 
               Contexto: {context} 
               Respuesta:`;
-            //console.log(mensaje);
+                            
             prompt = ChatPromptTemplate.fromMessages([
                 [
                   "human", mensaje,
                 ],
               ]);
+              console.log('Prompt:', prompt);
 
         case 'chat':
             break;
@@ -44,8 +45,6 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
         default:
             break;
     }
-
-    console.log('Prompt:', prompt);
 
     //Crea el retriever de acuerdo al indice
     const retriever = await createRetriever(indice);
@@ -56,7 +55,6 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
         retriever,
         formatDocumentsAsString,
     ]);
-    console.log('Contexto del retriever:', retrievalChain);
 
     //Crea la cadena del RAG
     const generationChain = RunnableSequence.from([
@@ -68,12 +66,12 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
         llm,
         outputParser,
     ]);
-    console.log('Cadena del RAG:', generationChain);
 
     //Hace la pregunta
     const respuesta = await generationChain.invoke({
         question: pregunta,
     });
+    console.log('Cadena del RAG:', respuesta);
     
     //Devuelve la respuesta
     return respuesta;

@@ -25,6 +25,7 @@ export async function createRetriever(indice): Promise<VectorStoreRetriever> {
     });
 
     const retriever = vectorStore.asRetriever();
+    console.log('Retriever:', retriever);
 
     return retriever;
 }

@@ -56,6 +56,7 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
         retriever,
         formatDocumentsAsString,
     ]);
+    console.log('Contexto del retriever:', retrievalChain);
 
     //Crea la cadena del RAG
     const generationChain = RunnableSequence.from([
@@ -67,6 +68,7 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
         llm,
         outputParser,
     ]);
+    console.log('Cadena del RAG:', generationChain);
 
     //Hace la pregunta
     const respuesta = await generationChain.invoke({

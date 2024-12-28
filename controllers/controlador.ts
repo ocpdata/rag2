@@ -20,6 +20,8 @@ export const preguntaIa = async (req, res, next) => {
     
     const respuesta = await generateAnswer(mensajeRol, tipoPregunta, indice, pregunta, temperatura);
 
+    //Respuesta de la IA
+    console.log('Respuesta de la IA:', respuesta);
     res.status(201).json({
         respuesta: respuesta,
         fecha: new Date().toISOString()

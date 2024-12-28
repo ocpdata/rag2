@@ -28,7 +28,7 @@ app.use('/',router);
 
 //Inicia el servidor https
 httpsServer.listen(443, () => {
-    console.log('HTTPS Server running on port 443 new');
+    console.log('HTTPS Server running on port 443');
 });
 
 /*app.listen(8080, () => {

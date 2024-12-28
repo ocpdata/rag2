@@ -16,7 +16,7 @@ const outputParser = new StringOutputParser();
 //Función que genera una respuesta usando RAG.
 //Se entrega la respuesta en base al tipo de consulta y al indice de donde se buscará en el vector database.
 export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta, temperatura): Promise<String> {
-    console.log('Entró a generateAnswer', mensajeRol, tipo_pregunta, indice, pregunta);
+    console.log('Entró a generateAnswer', mensajeRol, tipo_pregunta, indice, pregunta, temperatura);
 
     const llm = new ChatOpenAI({
         model: "gpt-4o-mini",
@@ -31,7 +31,7 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
             mensaje = mensajeRol + `Pregunta: {question} 
               Contexto: {context} 
               Respuesta:`;
-            console.log(mensaje);
+            //console.log(mensaje);
             prompt = ChatPromptTemplate.fromMessages([
                 [
                   "human", mensaje,
@@ -44,6 +44,8 @@ export async function generateAnswer(mensajeRol, tipo_pregunta, indice, pregunta
         default:
             break;
     }
+
+    console.log('Prompt:', prompt);
 
     //Crea el retriever de acuerdo al indice
     const retriever = await createRetriever(indice);
